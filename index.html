@@ -5,117 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Love Letter for Victoria</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
-<style>
-  /* General styles */
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: radial-gradient(circle at center, #fff5f9 0%, #ffcce0 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .page { display: none; flex-direction: column; align-items: center; text-align: center; width: 100%; }
-  .active { display: flex; }
 
-  /* --- PÁGINA 1 (FRENTE) --- */
-  .envelope-wrapper { display: flex; flex-direction: column; align-items: center; position: relative; width: 100%; }
-  .main-title { font-family: 'Dancing Script', cursive; font-size: 4em; margin-bottom: 60px; color: #d63384; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); z-index: 10; }
-  .envelope-container { position: relative; width: 90vw; max-width: 850px; }
-  .envelope-container img { width: 90%; padding-left: 125px; height: auto; display: block; filter: drop-shadow(0 20px 30px rgba(180, 40, 90, 0.25)); }
-  .envelope-text { position: absolute; bottom: 8%; left: 18%; text-align: left; transform: rotate(-2deg); }
-  .envelope-text h2 { font-family: 'Dancing Script', cursive; font-size: 2.2em; color: #b01c5c; margin: 0; line-height: 1.1; text-shadow: 0 1px 1px rgba(255,255,255,0.6); }
-  .heart-btn { position: absolute; top: 60%; left: 51.2%; transform: translate(-50%, -50%); background: transparent; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; text-shadow: 0 1px 2px rgba(0,0,0,0.3); padding: 30px; border-radius: 50%; animation: heartbeat 1.5s infinite; }
-  .heart-btn:hover { font-size: 1em; text-shadow: 0 0 10px #fff; }
-  @keyframes heartbeat { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } 100% { transform: translate(-50%, -50%) scale(1); } }
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/animations.css">
 
-  /* --- PÁGINA 2 E 3 (PAPEL DE CARTA) --- */
-  .letter-paper {
-    background-color: #fffdf0;
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    max-width: 700px;
-    width: 90%;
-    min-height: 60vh;
-    border: 1px solid #d4c5b4;
-    position: relative;
-    overflow: hidden;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Estilos específicos da PÁGINA 2 (GLITCH) */
-  .error-title { font-family: 'Source Code Pro', monospace; color: #ff3333; font-size: 1.8em; margin-bottom: 10px; text-transform: uppercase; animation: glitch-anim 0.5s infinite; }
-  .glitch-container { background: #0a0a0a; padding: 15px; height: 250px; overflow-y: auto; border: 2px solid #0f0; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2); width: 90%; text-align: left; }
-  .encrypted-text-content { font-family: 'Source Code Pro', monospace; color: #0f0; font-size: 1em; word-break: break-all; white-space: pre-wrap; text-shadow: 0 0 5px rgba(0, 255, 0, 0.7); animation: text-jitter 0.3s infinite random; }
-  .solution-area { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; border: 2px solid #d63384; width: 80%; }
-  .desmos-link { display: inline-block; margin-bottom: 15px; font-size: 1.3em; font-weight: bold; color: #d63384; text-decoration: none; border-bottom: 2px dashed #d63384; transition: 0.3s; }
-  .desmos-link:hover { transform: scale(1.05); border-bottom-style: solid; }
-  
-  /* Animações Glitch */
-  @keyframes glitch-anim { 0% { transform: translate(0); } 20% { transform: translate(-2px, 1px); } 40% { transform: translate(1px, -1px); } 60% { transform: translate(-1px, 2px); } 80% { transform: translate(1px, -2px); } 100% { transform: translate(0); } }
-  @keyframes text-jitter { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; transform: skewX(0.5deg); } }
-
-  /* --- POP-UPS CUSTOMIZADOS (CUTE) --- */
-  .custom-modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Fundo escuro transparente */
-    display: none; /* Escondido por padrão */
-    justify-content: center; align-items: center; z-index: 1000;
-    backdrop-filter: blur(4px);
-  }
-  .custom-modal {
-    background: #fff0f5;
-    padding: 30px;
-    border-radius: 20px;
-    border: 3px solid #ff66a3;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  .custom-modal h3 { color: #d63384; font-family: 'Dancing Script', cursive; font-size: 2.5em; margin-top: 0; margin-bottom: 10px; }
-  .custom-modal p { font-size: 1.2em; color: #555; line-height: 1.5; margin-bottom: 20px; }
-  .modal-btn {
-    background: #ff66a3; color: white; padding: 10px 25px; border: none; border-radius: 15px;
-    font-size: 1.2em; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(255, 102, 163, 0.3);
-  }
-  .modal-btn:hover { transform: scale(1.05); background: #ff4da6; }
-  
-  @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-  /* --- PÁGINA FINAL (TEXTO DATILOGRAFADO) --- */
-  .letter-text {
-    font-family: 'Source Code Pro', monospace; 
-    font-size: 1.1em; 
-    line-height: 1.6;
-    margin-top: 20px;
-    color: #333;
-    text-align: left; 
-    width: 100%;
-    min-height: 200px;
-  }
-  
-  .cursor {
-    display: inline-block; width: 8px; height: 18px; background-color: #d63384;
-    animation: blink 1s infinite; vertical-align: middle;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-  /* Botões e Input */
-  h1 { font-family: 'Dancing Script', cursive; font-size: 3em; color: #d63384; margin: 0; }
-  button.action-btn { padding: 10px 20px; font-size: 1.2em; border-radius: 25px; border: none; cursor: pointer; margin-top: 10px; transition: 0.3s; background: #ff4da6; color: white; box-shadow: 0 4px 10px rgba(255, 77, 166, 0.4); }
-  button.action-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(255, 77, 166, 0.6); }
-  .yes-btn { background: #ff4da6; color: white; } .no-btn { background: #ff9999; color: white; position: relative; }
-  input { padding: 10px; font-size: 1.2em; border-radius: 10px; border: 2px solid #ffb3c6; text-align: center; outline: none; margin-top: 5px; background: rgba(255,255,255,0.9); }
-  input:focus { border-color: #d63384; }
-  .valentine { margin-top: 30px; display: flex; gap: 20px; justify-content: center; width: 100%; opacity: 0; transition: opacity 1s; } 
-</style>
 </head>
 <body>
 
@@ -141,7 +34,9 @@
   <div class="envelope-wrapper">
     <h1 class="main-title">💌 A letter to my valentine</h1>
     <div class="envelope-container">
-      <img src="Envelope.png" alt="Envelope">
+      
+      <img src="assets/Envelope.png" alt="Envelope">
+      
       <div class="envelope-text">
         <h2>To: Victoria</h2>
         <h2>From: Martim</h2>
@@ -197,83 +92,8 @@
   </div>
 </div>
 
-<script>
-  // --- NAVEGAÇÃO E POP-UPS ---
-  
-  function goToEncrypted() {
-    document.getElementById('frontPage').classList.remove('active');
-    document.getElementById('encryptedPage').classList.add('active');
-    
-    const audio = document.getElementById('bgMusic');
-    if(audio) audio.play().catch(e => console.log("Audio waiting for interaction"));
-
-    setTimeout(() => {
-      document.getElementById('errorModal').style.display = 'flex';
-    }, 800);
-  }
-
-  function closeErrorModal() {
-    document.getElementById('errorModal').style.display = 'none';
-  }
-
-  // --- NOVA FUNÇÃO PARA O SUCESSO ---
-  function showSuccess() {
-    document.getElementById('successModal').style.display = 'flex';
-    // Opcional: Efeito de confetis podia ser adicionado aqui, mas o modal já é fofo!
-  }
-
-  function closeSuccessModal() {
-    document.getElementById('successModal').style.display = 'none';
-  }
-
-  // --- LÓGICA DE DECRIPTAÇÃO ---
-  
-  const fullMessage = "Wowwwww I'm amazed you made it here, you're SOOOOOO smart, I wanna thank you for everything you do for me, and thank you for being the most awesome person I know, I hope next valentine I can spoil you as you deserve, until then I'll give you all my love in every way I can. Will you be my E-Valentine?"; 
-  const correctV = "200"; 
-
-  function decryptLetter() {
-    const input = document.getElementById('vInput').value.trim();
-    if(input === correctV){
-      document.getElementById('encryptedPage').classList.remove('active');
-      document.getElementById('decryptedPage').classList.add('active');
-      
-      // Inicia o efeito de máquina de escrever
-      typeWriterEffect(fullMessage, 'typewriterText');
-      
-    } else {
-      alert("Try again dumbasss, look closely at the graph");
-    }
-  }
-
-  // --- EFEITO TYPEWRITER ---
-  
-  function typeWriterEffect(text, elementId) {
-    const element = document.getElementById(elementId);
-    element.innerHTML = ''; 
-    let i = 0;
-    const speed = 50; 
-
-    function type() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, speed);
-      } else {
-        document.getElementById('finalButtons').style.opacity = '1';
-        element.innerHTML += '<span class="cursor"></span>';
-      }
-    }
-    type();
-  }
-
-  // --- BOTÃO NÃO FUGITIVO ---
-  const noBtn = document.getElementById('noBtn');
-  noBtn.addEventListener('mouseover', () => {
-    const x = Math.random() * 200 - 100; 
-    const y = Math.random() * 200 - 100;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  });
-</script>
+<script src="js/decrypt.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

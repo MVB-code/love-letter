@@ -1,0 +1,296 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(circle at center, #fff5f9 0%, #ffcce0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page { 
+    display: none; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    width: 100%; 
+}
+
+.active { 
+    display: flex; 
+}
+
+/* --- PÁGINA 1 (FRENTE) --- */
+.envelope-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    position: relative; 
+    width: 100%; 
+}
+
+.main-title { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 4em; 
+    margin-bottom: 60px; 
+    color: #d63384; 
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); 
+    z-index: 10; 
+}
+
+/* --- TODO posições todas escafiadas, tornar tudo responsivo --- */
+.envelope-container { 
+    position: relative; 
+    width: 90vw; 
+    max-width: 850px; 
+}
+
+.envelope-container img { 
+    width: 90%; 
+    padding-left: 125px; 
+    height: auto; 
+    display: block; 
+    filter: drop-shadow(0 20px 30px rgba(180, 40, 90, 0.25)); 
+}
+
+.envelope-text { 
+    position: absolute; 
+    bottom: 8%; 
+    left: 18%; 
+    text-align: left; 
+    transform: rotate(-2deg); 
+}
+
+.envelope-text h2 { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.2em; 
+    color: #b01c5c; 
+    margin: 0; 
+    line-height: 1.1; 
+    text-shadow: 0 1px 1px rgba(255,255,255,0.6); 
+}
+
+.heart-btn { 
+    position: absolute; 
+    top: 60%; 
+    left: 51.2%; 
+    transform: translate(-50%, -50%); 
+    background: transparent; 
+    color: white; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    font-size: 0.9em; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    border: none; 
+    cursor: pointer; 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+    padding: 30px; 
+    border-radius: 50%; 
+    animation: heartbeat 1.5s infinite; 
+}
+
+.heart-btn:hover { 
+    font-size: 1em; 
+    text-shadow: 0 0 10px #fff; 
+}
+
+/* --- PÁGINA 2 E 3 (PAPEL DE CARTA) --- */
+.letter-paper {
+  background-color: #fffdf0;
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 700px;
+  width: 90%;
+  min-height: 60vh;
+  border: 1px solid #d4c5b4;
+  position: relative;
+  overflow: hidden;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos específicos da PÁGINA 2 (GLITCH) */
+.error-title { 
+    font-family: 'Source Code Pro', monospace; 
+    color: #ff3333; font-size: 1.8em; 
+    margin-bottom: 10px; 
+    text-transform: uppercase; 
+    animation: glitch-anim 0.5s infinite; 
+}
+
+.glitch-container { 
+    background: #0a0a0a; 
+    padding: 15px; 
+    height: 250px; 
+    overflow-y: auto; 
+    border: 2px solid #0f0;
+    margin-bottom: 20px; 
+    box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2); 
+    width: 90%; 
+    text-align: left; 
+}
+
+.encrypted-text-content { 
+    font-family: 'Source Code Pro', monospace; 
+    color: #0f0; 
+    font-size: 1em; 
+    word-break: break-all; 
+    white-space: pre-wrap; 
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7); 
+    animation: text-jitter 0.3s infinite random; 
+}
+
+.solution-area { 
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 20px; 
+    border-radius: 10px; 
+    border: 2px solid #d63384; 
+    width: 80%; 
+}
+
+.desmos-link { 
+    display: inline-block; 
+    margin-bottom: 15px; 
+    font-size: 1.3em; 
+    font-weight: bold; 
+    color: #d63384; 
+    text-decoration: none; 
+    border-bottom: 2px dashed #d63384; 
+    transition: 0.3s; 
+}
+
+.desmos-link:hover { 
+    transform: scale(1.05); 
+    border-bottom-style: solid; 
+}
+
+/* --- POP-UPS CUSTOMIZADOS --- */
+.custom-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: none; /* Escondido por def */
+  justify-content: center; align-items: center; z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.custom-modal {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 20px;
+  border: 3px solid #ff66a3;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.custom-modal h3 { 
+    color: #d63384; 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.5em; 
+    margin-top: 0; 
+    margin-bottom: 10px; 
+}
+
+.custom-modal p { 
+    font-size: 1.2em; 
+    color: #555; 
+    line-height: 1.5; 
+    margin-bottom: 20px;
+}
+
+.modal-btn {
+  background: #ff66a3; 
+  color: white; 
+  padding: 10px 25px; 
+  border: none; 
+  border-radius: 15px;
+  font-size: 1.2em; 
+  cursor: pointer; 
+  transition: transform 0.2s; 
+  box-shadow: 0 4px 10px rgba(255, 102, 163, 0.3);
+}
+.modal-btn:hover { 
+    transform: scale(1.05); 
+    background: #ff4da6; 
+}
+
+/* --- PÁGINA FINAL (TEXTO DATILOGRAFADO) --- */
+.letter-text {
+  font-family: 'Source Code Pro', monospace; 
+  font-size: 1.1em; 
+  line-height: 1.6;
+  margin-top: 20px;
+  color: #333;
+  text-align: left; 
+  width: 100%;
+  min-height: 200px;
+}
+
+.cursor {
+  display: inline-block; 
+  width: 8px; 
+  height: 18px; 
+  background-color: #d63384;
+  animation: blink 1s infinite; 
+  vertical-align: middle;
+}
+
+/* Botões e Input */
+h1 { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 3em; 
+    color: #d63384; margin: 0; 
+}
+
+button.action-btn { 
+    padding: 10px 20px; 
+    font-size: 1.2em; 
+    border-radius: 25px; 
+    border: none; 
+    cursor: pointer; 
+    margin-top: 10px; 
+    transition: 0.3s; 
+    background: #ff4da6; 
+    color: white; 
+    box-shadow: 0 4px 10px rgba(255, 77, 166, 0.4); 
+}
+
+button.action-btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(255, 77, 166, 0.6); 
+}
+
+.yes-btn {
+    background: #ff4da6; color: white; 
+} 
+
+.no-btn { 
+    background: #ff9999; 
+    color: white; 
+    position: relative; 
+}
+
+input { 
+    padding: 10px; 
+    font-size: 1.2em; 
+    border-radius: 10px; 
+    border: 2px solid #ffb3c6; 
+    text-align: center; 
+    outline: none; 
+    margin-top: 5px; 
+    background: rgba(255,255,255,0.9); 
+}
+
+input:focus { border-color: #d63384; }
+
+.valentine { 
+    margin-top: 30px; 
+    display: flex; gap: 20px; 
+    justify-content: center;
+    width: 100%; 
+    opacity: 0; 
+    transition: opacity 1s; 
+}
