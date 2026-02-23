@@ -88,4 +88,7 @@ function goHome() {
   
   const vInput = document.getElementById('vInput');
   if(vInput) vInput.value = '';
+
+  const noBtn = document.getElementById('noBtn');
+  if(noBtn) noBtn.style.transform = 'translate(0px, 0px)';
 }
