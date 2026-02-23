@@ -294,3 +294,53 @@ input:focus { border-color: #d63384; }
     opacity: 0; 
     transition: opacity 1s; 
 }
+
+/* --- BOTÃO DO SOM --- */
+.sound-btn {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  background: transparent; 
+  border: none;            
+  color: #ff9999;         
+  cursor: pointer;
+  z-index: 2000;
+  padding: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sound-btn.playing {
+  color: #d63384; 
+}
+
+.sound-btn:hover {
+  transform: scale(1.15) rotate(5deg); 
+  filter: drop-shadow(0 2px 4px rgba(214, 51, 132, 0.4));
+}
+
+/* --- BOTÃO DE HOME --- */
+.home-btn {
+  position: fixed;
+  top: 20px;
+  left: 25px;
+  background: transparent;
+  border: none;
+  color: #d63384; 
+  cursor: pointer;
+  z-index: 2000;
+  padding: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-btn:hover {
+  transform: scale(1.15) translateY(-3px); 
+  filter: drop-shadow(0 2px 4px rgba(214, 51, 132, 0.4));
+}
